@@ -1,21 +1,21 @@
 # Site settings
-title: Thomas Zühlke
+title: Ma Jun OS
 description: 'Business Card Page'
-url: 'http://thomas.zuehlke.family'
+url: 'https://www.xiaopeng.com/'
 baseurl: ''
-profilepic: '/images/tzuehlke.jpg'
+profilepic: '/images/majun.jpg'
 bkimage: '/images/bk1.jpg'
 google_analytics: UA-XXXXXX-X
 font_awesome: 'XXXXXXXXXX.js'
 
 author:
-  name: 'Thomas Zühlke'
-  email: info@thomas-zuehlke.de
-  twitter_username: thomzuehlke
-#  facebook_username: joshgerdes
-  github_username:  tzuehlke
-  linkedin_username:  thomas-zühlke-889182165
-  meetup_name: Azure-Meetup-Rostock-MV
+  name: 'Ma Jun'
+  email: 17665000622@163.com
+# twitter_username: thomzuehlke
+# facebook_username: joshgerdes
+  github_username:  majunos
+#  linkedin_username:  thomas-zühlke-889182165
+#  meetup_name: Azure-Meetup-Rostock-MV
 
 # Build settings
 destination: _site
