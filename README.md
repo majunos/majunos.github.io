@@ -1,56 +1,36 @@
-# Jekyll GitBook
+# Jekyll-Uno with Projects as Timeline
+A Jekyll Theme, based on the Uno-Theme with a list of projects as Timeline.
 
-Make Jelly site have a GitBook look!
+## How does is look
+[Demo](http://thomas.zuehlke.family/)
+![Screenshot](screenshot-overview.png)
+![jekyll-theme-desktop](https://user-images.githubusercontent.com/32843441/72224870-5451ff00-357f-11ea-8fc2-bfbd4499bc63.gif)
+![jekyll-theme-mobil](https://user-images.githubusercontent.com/32843441/72224877-6a5fbf80-357f-11ea-920b-dfae72bf2fbe.gif)
 
-## Demo
+## Installation/Setup
+1. Download or clone repo `git clone https://github.com/tzuehlke/jekyll-uno-timeline.git`
+2. Enter the folder: `cd jekyll-uno-timeline/`
+3. Build it: `jekyll build`
+4. Start Jekyll server: `jekyll serve`
+5. Configure: `_config.yml`
+   * at least set `font_awesome` or download and add the font in `head.html`
 
-Live demo on Github Pages: [https://sighingnow.github.io/jekyll-gitbook](https://sighingnow.github.io/jekyll-gitbook)
+Access via: [http://localhost:4000/](http://localhost:4000/)
 
-[![Jekyll Themes](https://img.shields.io/badge/featured%20on-JekyllThemes-red.svg)](https://jekyll-themes.com/jekyll-gitbook/)
-
-## Why Jekyll with GitBook
-
-GitBook is an amazing frontend style to present and organize contents (such as book chapters
-and blogs) on Web. The typical to deploy GitBook at [Github Pages][1]
-is building HTML files locally and then push to Github repository, usually to the `gh-pages`
-branch. It's quite annoying to repeat such workload and make it hard for people do version
-control via git for when there are generated HTML files to be staged in and out.
-
-This theme takes style definition out of generated GitBook site and provided the template
-for Jekyll to rendering markdown documents to HTML, thus the whole site can be deployed
-to [Github Pages][1] without generating and uploading HTML bundle every time when there are
-changes to the original repo.
-
-## How to Get Started
-
-This theme can be used just as other [Jekyll themes][1].
-
-[Fork][3] this repository and add your markdown posts to the `_posts` folder.
-
-### Deploy Locally with Jekyll Serve
-
-This theme can be ran locally using Ruby and Gemfiles.
-
-[Testing your GitHub Pages site locally with Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll) - GitHub
-
-## How to generate TOC
-
-The jekyll-gitbook theme leverages [jekyll-toc][4] to generate the *Contents* for the page.
-The TOC feature is not enabled by default. To use the TOC feature, modify the TOC
-configuration in `_config.yml`:
-
-```yaml
-toc:
-    enabled: true
-```
-
-## License
-
-This work is open sourced under the Apache License, Version 2.0.
-
-Copyright 2019 Tao He.
-
-[1]: https://pages.github.com
-[2]: https://pages.github.com/themes
-[3]: https://github.com/sighingnow/jekyll-gitbook/fork
-[4]: https://github.com/allejo/jekyll-toc
+## Details/Features/Changes
+* based on the [Uno-Theme](https://github.com/joshgerdes/jekyll-uno), but:
+  * removed everything with posts
+  * `content-wrapper` can be shown or hidden with button
+  * changed all icons to [Font-Awesome](https://fontawesome.com/)
+  * updated google-analytics snipped
+  * added [Meetup-Link](https://www.meetup.com/)
+  * removed RSS
+  * removed Disqus
+  * using a Timeline-Design instead of posts, therefore no pagination anymore
+* using Timeline ([CSS](https://github.com/le4ker/personal-jekyll-theme/blob/master/css/timeline.scss), [HTML](https://github.com/le4ker/personal-jekyll-theme/blob/master/_includes/timeline.html) ) from [{ Personal } Jekyll Theme](https://github.com/le4ker/personal-jekyll-theme) for a list of projects, but:
+  * still with 3 layouts for different screen-width, but without images on small screens
+  * timeline information source is now `_data/projects.yaml`
+  * always using the `timeline-inverted`-class, for text on the right side of the images
+* using [github_api.js](https://github.com/jarrekk/Jalpc/blob/master/static/js/github_api.js) from [Jalpc.](https://github.com/jarrekk/Jalpc), but:
+  * changed the GitHub-URL for using with persons and organisations
+  * added watchers number

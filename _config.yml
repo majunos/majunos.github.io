@@ -1,46 +1,36 @@
-# Configurations
-title:            Jekyll Gitbook
-longtitle:        Jekyll Gitbook
-author:           HE Tao
-email:            sighingnow@gmail.com
-description: >
-  Build Jekyll site with the GitBook style.
+# Site settings
+title: Thomas Zühlke
+description: 'Business Card Page'
+url: 'http://thomas.zuehlke.family'
+baseurl: ''
+profilepic: '/images/tzuehlke.jpg'
+bkimage: '/images/bk1.jpg'
+google_analytics: UA-XXXXXX-X
+font_awesome: 'XXXXXXXXXX.js'
 
-version:          1.0
-gitbook_version:  3.2.3
+author:
+  name: 'Thomas Zühlke'
+  email: info@thomas-zuehlke.de
+  twitter_username: thomzuehlke
+#  facebook_username: joshgerdes
+  github_username:  tzuehlke
+  linkedin_username:  thomas-zühlke-889182165
+  meetup_name: Azure-Meetup-Rostock-MV
 
-url:              'https://sighingnow.github.io'
-baseurl:          '/jekyll-gitbook'
-rss:              RSS
+# Build settings
+destination: _site
+markdown: kramdown
+highlighter: rouge
 
-toc:
-  enabled: true
-  h_min: 1
-  h_max: 3
+sass:
+    sass_dir: _sass
+    style: compressed
 
-# markdown render engine.
-markdown:         kramdown
 kramdown:
-  auto_ids:               true
-  input:                  GFM
-  math_engine:            mathjax
-  smart_quotes:           lsquo,rsquo,ldquo,rdquo
-  toc_levels:             1..6
-  syntax_highlighter:     rouge
-  syntax_highlighter_opts:
-    guess_lang:           true
+  # use Github Flavored Markdown
+  input: GFM
+  # do not replace newlines by <br>s
+  hard_wrap: false
 
-markdown_ext:     markdown,mkdown,mkdn,mkd,md
-
-# Permalinks
-permalink:        /:categories/:year-:month-:day-:title:output_ext
-
-exclude:
-  - _drafts
-
-destination:      ./_site
-incremental:      false
-regenerate:       true
-
-plugins:
-  - jemoji
+#plugins: ['jekyll-paginate']
+exclude: ['README.md', 'screenshot-overview.png']
