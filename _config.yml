@@ -21,7 +21,7 @@ sass:
 
 # Comment
 comment:
-  disqus: kongsong    
+  disqus: majun 
   # duoshuo: kongsong
   # youyan: 2122392
   # laibili: MTAyMC8yODgzNC81NDA0
@@ -34,17 +34,17 @@ baidu_analytics: 5b31ffbbdc6cff18727f3adf75a03777    #from //hm.baidu.com/hm.js?
 # Author information:
 author:
   #resume: /resume
-  name: Song Kong     #the name of Blog section
-  about_me: I'm Song Kong. This is my online home & blog, where I share thoughts about front-end development, cloud computing, my daily life and other insteresting topics. Feel free to contact me by email if you have any question.
+  name: Ma Jun     #the name of Blog section
+  about_me: ReedPipe OS is my online home & blog, where I share thoughts about OS development, my daily life and other insteresting technical topics. Feel free to contact me by email if you have any question.
  
 # Social Links
-email:               hi@ikongsong.com
+email:               17665000622@163.com
 #google.plus:        username
 #twitter:            username
-facebook:            kongsong
-github:              songkong
-stackoverflow:      6438519/song-kong   #from a "http://stackoverflow.com/users/123456/username" link
-linkedin:           kongsong
+#facebook:            kongsong
+github:              majunos
+#stackoverflow:      6438519/song-kong   #from a "http://stackoverflow.com/users/123456/username" link
+#linkedin:           kongsong
 #xing:              username
 #instagram:          username
 #lastfm:            username
