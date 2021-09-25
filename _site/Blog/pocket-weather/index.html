@@ -9,8 +9,8 @@
   <meta name="description" content="最近把自己开发的第一个微信小程序上线了，特此总结一下从0到1的完整思路~">
 
   <link rel="stylesheet" href="/assets/css/main.css" | prepend: site.baseurl }}">
-  <link rel="canonical" href="http://localhost:4000/blog/pocket-weather/">
-  <link rel="alternate" type="application/rss+xml" title="ReedPipeOS-Song Kong" href="http://localhost:4000/feed.xml">
+  <link rel="canonical" href="ikongsong.com/blog/pocket-weather/">
+  <link rel="alternate" type="application/rss+xml" title="ReedPipeOS-Song Kong" href="ikongsong.com/feed.xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
   <script src="/assets/js/jquery-1.8.2.min.js" | prepend: site.baseurl }}"></script>
   <script src="/assets/js/jPages.js" | prepend: site.baseurl }}"></script>
@@ -144,7 +144,7 @@
 
 <p>编写第一步就是数据的获取，这里按照百度地图 API 的文档说明很容易就可以实现。由于地图 API 的封装问题，目前不能通过城市名进行数据请求，只支持根据经纬度获取天气信息，因此自己写了个脚本抓取每个城市的中心点坐标，再根据坐标请求相应的天气数据。由于请求数据有一定的耗时，因此需要在请求前加一个 loading 的动作，在请求失败时跳转失败页面。</p>
 
-<p>获取到数据后，需要对数据进行处理，再将其渲染到前端页面。这一步需要判断当前为白天还是黑夜、根据当前 PM 2.5 值设置进度条的位置、根据天气状况设置天气动画等。值得一提的是 PM 2.5 的设置，系统默认最大值为1000，当用户所在城市空气质量爆表之后，把最大值存储在<code class="highlighter-rouge">localStorage</code>中，并更新滚动条的取值范围。</p>
+<p>获取到数据后，需要对数据进行处理，再将其渲染到前端页面。这一步需要判断当前为白天还是黑夜、根据当前 PM 2.5 值设置进度条的位置、根据天气状况设置天气动画等。值得一提的是 PM 2.5 的设置，系统默认最大值为1000，当用户所在城市空气质量爆表之后，把最大值存储在<code class="language-plaintext highlighter-rouge">localStorage</code>中，并更新滚动条的取值范围。</p>
 
 <h3 id="测试">测试</h3>
 
@@ -156,7 +156,7 @@
 
 <p>自测完毕后，就可以在开发工具中提交代码啦。接着就是给自己的小程序起一个辨识度高的名字、设置一个好看的 Logo、添加几个标签，完成这些内容后，就可以在微信开放平台中申请审核。审核期大概是两天，审核通过后直接发布线上！大功告成。</p>
 
-<p>下面是口袋天气的小程序码，可以直接使用微信扫一扫打开小程序，或在<code class="highlighter-rouge">微信</code>-<code class="highlighter-rouge">发现</code>-<code class="highlighter-rouge">小程序</code>中搜索<code class="highlighter-rouge">口袋天气</code>。</p>
+<p>下面是口袋天气的小程序码，可以直接使用微信扫一扫打开小程序，或在<code class="language-plaintext highlighter-rouge">微信</code>-<code class="language-plaintext highlighter-rouge">发现</code>-<code class="language-plaintext highlighter-rouge">小程序</code>中搜索<code class="language-plaintext highlighter-rouge">口袋天气</code>。</p>
 
 <p><img src="http://ikongsong.com/assets/images/pocket-weather.jpg" alt="pocket-weather" /></p>
 
@@ -189,10 +189,10 @@
 
 			
 <div style="margin-top:30px">
-    <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/blog/pocket-weather/" class="share-btn twitter-btn" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
-    <a href="https://plus.google.com/share?url=http://localhost:4000/blog/pocket-weather/" class="share-btn googleplus-btn" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/pocket-weather/" class="share-btn facebook-btn" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
-    <a href="http://v.t.sina.com.cn/share/share.php?title=http://localhost:4000/blog/pocket-weather/" class="share-btn weibo-btn" title="Share on Sina Weibo"><i class="fa fa-fw fa-weibo" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/intent/tweet?text=ikongsong.com/blog/pocket-weather/" class="share-btn twitter-btn" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=ikongsong.com/blog/pocket-weather/" class="share-btn googleplus-btn" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=ikongsong.com/blog/pocket-weather/" class="share-btn facebook-btn" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+    <a href="http://v.t.sina.com.cn/share/share.php?title=ikongsong.com/blog/pocket-weather/" class="share-btn weibo-btn" title="Share on Sina Weibo"><i class="fa fa-fw fa-weibo" aria-hidden="true"></i></a>
 </div>
 
 
@@ -235,17 +235,17 @@
   <div class="footer-content">
     <div class="social-wrapper text-center">
       <ul class="social-lists">
-        <li><a class="social-btn btn-white" href="mailto:hi@ikongsong.com" target="_blank" rel="noopener noreferrer" title="Mail me"><i class="fa fa-fw fa-envelope"></i></a></li>
-        
-        
-        <li><a class="social-btn btn-white" href="http://facebook.com/kongsong" target="_blank" rel="noopener noreferrer" title="Follow me on Facebook"><i class="fa fa-fw fa-facebook"></i></a></li>
-        
-        <li><a class="social-btn btn-white" href="http://linkedin.com/in/kongsong" target="_blank" rel="noopener noreferrer" title="Follow me on Linkedin"><i class="fa fa-fw fa-linkedin"></i></a></li>
+        <li><a class="social-btn btn-white" href="mailto:17665000622@163.com" target="_blank" rel="noopener noreferrer" title="Mail me"><i class="fa fa-fw fa-envelope"></i></a></li>
         
         
         
-        <li><a class="social-btn btn-white" href="http://github.com/songkong" target="_blank" rel="noopener noreferrer" title="Follow me on Github"><i class="fa fa-fw fa-github"></i></a></li>
-        <li><a class="social-btn btn-white" href="http://stackoverflow.com/users/6438519/song-kong" target="_blank" rel="noopener noreferrer" title="Follow me on Stackoverflow"><i class="fa fa-fw fa-stack-overflow"></i></a></li>
+        
+        
+        
+        
+        
+        <li><a class="social-btn btn-white" href="http://github.com/majunos" target="_blank" rel="noopener noreferrer" title="Follow me on Github"><i class="fa fa-fw fa-github"></i></a></li>
+        
         
         
         
@@ -261,7 +261,7 @@
         
       </ul>
     </div>
-    <div class="copyright text-center">Copyright © 2020 Song Kong. Powered by Jekyll.</div>
+    <div class="copyright text-center">Copyright © 2021 Ma Jun. Powered by Jekyll.</div>
   </div>
   <div id="top" class="btn-top" style="display:none">
     <a href=" #header "><i class="fa fa-paw" aria-hidden="true"></i></a>

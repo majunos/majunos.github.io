@@ -1,0 +1,111 @@
+I"�<p>之前开发一个移动端的图片墙功能，需要实现图片的滑动、缩放功能，因此研究了一下目前比较流行的几个开源插件，这里总结一下。</p>
+
+<ul>
+  <li>TouchSlide</li>
+  <li>FlexSlider</li>
+  <li>Swiper</li>
+  <li>iScroll</li>
+  <li>iSlider</li>
+</ul>
+
+<p>在选择插件的时候，主要考虑三方面因素：</p>
+
+<ul>
+  <li>因为是移动端，插件大小尽可能小，节省流量。</li>
+  <li>API 足够丰富，能够满足基本开发需求。</li>
+  <li>移动端流畅度较好。</li>
+</ul>
+
+<h4 id="各插件基本介绍">各插件基本介绍</h4>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>插件名</th>
+      <th>相关链接</th>
+      <th>主要功能</th>
+      <th>优点</th>
+      <th>缺点</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TouchSlide</td>
+      <td><a href="http://www.superslide2.com/TouchSlide/param.html">Link</a></td>
+      <td>触屏焦点图、触屏Tab切换、触屏多图切换</td>
+      <td>体积小、专为移动端设计</td>
+      <td>仅支持两个回调函数</td>
+    </tr>
+    <tr>
+      <td>FlexSlider</td>
+      <td><a href="https://woocommerce.com/flexslider/">Link</a></td>
+      <td>图片轮播效果、焦点图效果、图文混排滚动</td>
+      <td>体积较小</td>
+      <td>API 比 TouchSlider 丰富，但也比较少</td>
+    </tr>
+    <tr>
+      <td>Swiper</td>
+      <td><a href="http://www.swiper.com.cn/api/index.html">Link</a></td>
+      <td>触屏焦点图、触屏Tab切换、触屏多图切换</td>
+      <td>API 丰富、自带放大功能</td>
+      <td>体积过大</td>
+    </tr>
+    <tr>
+      <td>iScroll</td>
+      <td><a href="http://cubiq.org/iscroll-5">Link</a></td>
+      <td>CSS 动画、缩放、拉动刷新、捕捉元素</td>
+      <td>体积小、API 丰富</td>
+      <td>Android 中端机中，提供的部分参数值不准确</td>
+    </tr>
+    <tr>
+      <td>iSlider</td>
+      <td><a href="http://be-fe.github.io/iSlider/demo/">Link</a></td>
+      <td>图片和 DOM 的滑动、可自定义插件</td>
+      <td>体积较小、API 丰富</td>
+      <td>需要额外引入 CSS 文件</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="各插件缩放对比">各插件缩放对比</h4>
+
+<hr />
+
+<p>由于<code class="language-plaintext highlighter-rouge">TouchSlide</code>和<code class="language-plaintext highlighter-rouge">FlexSlider</code>支持回调函数过少、本身无缩放功能，这里不再讨论这两个插件。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>插件名</th>
+      <th>所需文件</th>
+      <th>文件大小</th>
+      <th>缩放存在的问题</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Swiper</td>
+      <td>swiper.min.js, swiper.min.css</td>
+      <td>94.2KB + 17.3KB</td>
+      <td>放大后，无法移动到屏幕之外的地方</td>
+    </tr>
+    <tr>
+      <td>iScroll</td>
+      <td>iscroll-zoom.js</td>
+      <td>58.4KB</td>
+      <td>图片滑动需设置屏幕捕捉，当前图片放大后，滑动一下，会出现两张图片各占屏幕一半的情况</td>
+    </tr>
+    <tr>
+      <td>iSlider</td>
+      <td>slider.min.js, slider.min.css</td>
+      <td>20.5KB + 1.5KB</td>
+      <td>第一次放大后，继续放大灵敏度低</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>总结：个人比较倾向<code class="language-plaintext highlighter-rouge">iScroll</code>和<code class="language-plaintext highlighter-rouge">iSlider</code>两个插件，但这些插件在缩放上的交互与原生相差较大，还需继续努力。</p>
+
+:ET

@@ -1,0 +1,32 @@
+I"�<p>之前用 iScroll 做了一个图片墙，在部分 Android 机上会出现滑动时无法切换整张图片的问题，通过添加如下代码解决了该问题:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">touchmove</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span></code></pre></figure>
+
+<p>最近又被报了同样的 Bug，明明之前修复过呀，怎么又复现了，百思不得其解！拿着真机调试，发现控制台给了个 Warning，提示<code class="language-plaintext highlighter-rouge">Passvie Event Listeners</code>新特性。这是个什么东西呢？</p>
+
+<p>其实它已经有一段时间了，关注<code class="language-plaintext highlighter-rouge">2016 Google I/O Mobile Talk</code>的同学应该有些印象。它能够提升页面的滑动流畅度，以下是官方说明：</p>
+
+<blockquote>
+  <p>A new feature in the DOM spec that enable developers to opt-in to better scroll performance by eliminating the need for scrolling to block on touch and wheel event listeners.</p>
+
+  <p>Developers can annotate touch and wheel listeners with {passive: true} to indicate that they will never invoke preventDefault.</p>
+</blockquote>
+
+<p>翻译过来大概就是：</p>
+
+<blockquote>
+  <p>在监听<code class="language-plaintext highlighter-rouge">mousewheel</code>或者<code class="language-plaintext highlighter-rouge">touch</code>事件中，增加了<code class="language-plaintext highlighter-rouge">passive</code>这个设置，当它为<code class="language-plaintext highlighter-rouge">true</code>时，就表示事件处理程序不会调用<code class="language-plaintext highlighter-rouge">preventDefault</code>来阻止默认行为。</p>
+</blockquote>
+
+<p>举个例子，如果我们在 touchmove 事件调用 preventDefault，这时会禁止浏览器默认行为，页面不会滚动或缩放。浏览器无法预先知道一个监听器会不会调用 preventDefault()，它需要等监听器执行完后，再去执行默认行为，而监听器执行是要耗时的，这样就会导致页面卡顿。如果 Web 开发者能够提前告诉浏览器监听器不会调用 preventDefault 函数来阻止默认行为，那么浏览器就能快速生成事件，从而提升页面性能。passive 由此而生，我们可以通过传递 passive 为 true 来明确告诉浏览器，事件处理程序不会调用 preventDefault 来阻止默认滑动行为。</p>
+
+<p>该特性兼容<code class="language-plaintext highlighter-rouge">Chrome 51</code>和<code class="language-plaintext highlighter-rouge">Firefox 49</code>开始的浏览器，默认设置为<code class="language-plaintext highlighter-rouge">true</code>，此时<code class="language-plaintext highlighter-rouge">event.cancelable</code>为<code class="language-plaintext highlighter-rouge">false</code>。因此，可以使用如下代码告诉浏览器，监听器会使用<code class="language-plaintext highlighter-rouge">preventDefault</code>函数：</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">touchmove</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<span class="p">},</span> <span class="p">{</span><span class="na">passive</span><span class="p">:</span> <span class="kc">false</span><span class="p">});</span></code></pre></figure>
+
+<p>至此，iScroll 的轮播问题就解决啦。</p>
+:ET

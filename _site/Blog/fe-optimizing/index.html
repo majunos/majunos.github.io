@@ -9,8 +9,8 @@
   <meta name="description" content="随着前端技术的飞速发展，性能问题越来越受到重视，本文从代码和网络性能两部分，总结了常用的前端优化方法。">
 
   <link rel="stylesheet" href="/assets/css/main.css" | prepend: site.baseurl }}">
-  <link rel="canonical" href="http://localhost:4000/blog/fe-optimizing/">
-  <link rel="alternate" type="application/rss+xml" title="ReedPipeOS-Song Kong" href="http://localhost:4000/feed.xml">
+  <link rel="canonical" href="ikongsong.com/blog/fe-optimizing/">
+  <link rel="alternate" type="application/rss+xml" title="ReedPipeOS-Song Kong" href="ikongsong.com/feed.xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
   <script src="/assets/js/jquery-1.8.2.min.js" | prepend: site.baseurl }}"></script>
   <script src="/assets/js/jPages.js" | prepend: site.baseurl }}"></script>
@@ -108,13 +108,13 @@
 
 <p>当下 Web 端的性能诊断工具已经非常丰富，如<a href="http://www.webpagetest.org/">WebPageTest</a>、<a href="https://developers.google.com/speed/pagespeed/">Google PageSpeed</a>、<a href="http://developer.yahoo.com/yslow/">YSlow</a>。可以通过上述工具分析自己的网站性能，查找影响性能的原因。</p>
 
-<p>如果不想安装上面的扩展插件，利用<code class="highlighter-rouge">Chrome Dev Tools</code>中的时间线和网络视图也可以很方便的定位问题所在。</p>
+<p>如果不想安装上面的扩展插件，利用<code class="language-plaintext highlighter-rouge">Chrome Dev Tools</code>中的时间线和网络视图也可以很方便的定位问题所在。</p>
 
-<p><code class="highlighter-rouge">Network</code>可以帮助识别出由于请求缓慢而导致的延迟。</p>
+<p><code class="language-plaintext highlighter-rouge">Network</code>可以帮助识别出由于请求缓慢而导致的延迟。</p>
 
 <p><img src="http://ikongsong.com/assets/images/posts/fe-optimizing/1.png" alt="network" /></p>
 
-<p><code class="highlighter-rouge">Timeline</code>可以帮忙找出疑似较长的<code class="highlighter-rouge">Evaluate Script</code>事件。Chrome 用四种颜色表示不同的事件：</p>
+<p><code class="language-plaintext highlighter-rouge">Timeline</code>可以帮忙找出疑似较长的<code class="language-plaintext highlighter-rouge">Evaluate Script</code>事件。Chrome 用四种颜色表示不同的事件：</p>
 
 <p><img src="http://ikongsong.com/assets/images/posts/fe-optimizing/2.png" alt="recalculate-style" /></p>
 
@@ -139,7 +139,7 @@
 
 <h4 id="21-压缩代码">2.1 压缩代码</h4>
 
-<p>JavaScript 应用是以源码形式进行分发的，而源码解析的效率是要比字节码低的。对于一小段脚本来说，区别可以忽略不计。但是对于更大型的应用，脚本的大小会对应用启动时间有着负面的影响。目前很多工具都实现了代码的压缩功能，如<code class="highlighter-rouge">Webpack</code>和<code class="highlighter-rouge">Gulp</code>。同时，还可以利用这些工具对 CSS 代码进行压缩。</p>
+<p>JavaScript 应用是以源码形式进行分发的，而源码解析的效率是要比字节码低的。对于一小段脚本来说，区别可以忽略不计。但是对于更大型的应用，脚本的大小会对应用启动时间有着负面的影响。目前很多工具都实现了代码的压缩功能，如<code class="language-plaintext highlighter-rouge">Webpack</code>和<code class="language-plaintext highlighter-rouge">Gulp</code>。同时，还可以利用这些工具对 CSS 代码进行压缩。</p>
 
 <h4 id="22-避免或最小化-js-和-css-的使用而阻塞渲染">2.2 避免或最小化 JS 和 CSS 的使用而阻塞渲染</h4>
 
@@ -149,7 +149,7 @@
 
 <p>通过使用 CSS 媒体查询，告诉浏览器，哪些 CSS 样式表应用在某个特定的显示媒体上。举个例子，用于打印的某些规则可以被赋予比用于屏幕显示更低的优先级。</p>
 
-<p>媒体查询可以被设置成<code class="highlighter-rouge">&lt;link&gt;</code>标签属性：</p>
+<p>媒体查询可以被设置成<code class="language-plaintext highlighter-rouge">&lt;link&gt;</code>标签属性：</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">media=</span><span class="s">"only screen and (max-device-width: 480px)"</span> <span class="na">href=</span><span class="s">"mobile-device.css"</span> <span class="nt">/&gt;</span></code></pre></figure>
 
@@ -159,13 +159,13 @@
 
 <p>至于 JS，关键就在于遵循某些用于内联 JS 的规则（比如内联在 HTML 文件当中的代码）。内联 JS 应该尽可能短，并将其放在不会阻塞页面剩余部分解析的地方。换句话说，被放在 HTML 树中间的内联 JS 将会在这个地方阻塞解析器，并强制其等待直到脚本被执行完毕。如果在 HTML 文件中随意放了一些大的代码块或者很多小的代码块，这会成为性能杀手。内联可以有效减少额外对于某些特定脚本的网络请求。但是对于重复使用的脚本或者大的代码块来说，这个好处就可以忽略不计了。</p>
 
-<p>防止 JS 阻塞解析器和渲染器的一种方法就是将<code class="highlighter-rouge">&lt;script&gt;</code>标签标记为异步的。这限制了我们对于 DOM 的访问但是可以让浏览器不管脚本的执行状态而继续解析和渲染页面。换句话说，为了获得最佳的启动时间，确保那些对于渲染不重要的脚本已经通过异步属性的方式标记成异步的了。</p>
+<p>防止 JS 阻塞解析器和渲染器的一种方法就是将<code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>标签标记为异步的。这限制了我们对于 DOM 的访问但是可以让浏览器不管脚本的执行状态而继续解析和渲染页面。换句话说，为了获得最佳的启动时间，确保那些对于渲染不重要的脚本已经通过异步属性的方式标记成异步的了。</p>
 
 <p>对于不能标记为异步的 JS 脚本，可以放在页面底部最后加载，防止阻塞其它资源。</p>
 
 <h4 id="23-避免空的-src-和-href">2.3 避免空的 src 和 href</h4>
 
-<p>当 link 标签的<code class="highlighter-rouge">href</code>属性为空、script 标签的<code class="highlighter-rouge">src</code>属性为空的时候，浏览器渲染的时候会把当前页面的 URL 作为它们的属性值，从而把页面的内容加载进来作为它们的值。所以要避免犯这样的疏忽。</p>
+<p>当 link 标签的<code class="language-plaintext highlighter-rouge">href</code>属性为空、script 标签的<code class="language-plaintext highlighter-rouge">src</code>属性为空的时候，浏览器渲染的时候会把当前页面的 URL 作为它们的属性值，从而把页面的内容加载进来作为它们的值。所以要避免犯这样的疏忽。</p>
 
 <h4 id="24-使用索引加速数据库查询">2.4 使用索引加速数据库查询</h4>
 
@@ -210,13 +210,13 @@
 
 <h5 id="255-字符串拼接">2.5.5 字符串拼接</h5>
 
-<p>在 JS 中使用<code class="highlighter-rouge">+</code>号来拼接字符串效率是比较低的，因为每次运行都会开辟新的内存并生成新的字符串变量，然后将拼接结果赋值给新变量。与之相比更为高效的做法是使用数组的<code class="highlighter-rouge">join</code>方法，即将需要拼接的字符串放在数组中最后调用其 join 方法得到结果。不过由于使用数组也有一定的开销，因此当需要拼接的字符串较多的时候可以考虑用此方法。</p>
+<p>在 JS 中使用<code class="language-plaintext highlighter-rouge">+</code>号来拼接字符串效率是比较低的，因为每次运行都会开辟新的内存并生成新的字符串变量，然后将拼接结果赋值给新变量。与之相比更为高效的做法是使用数组的<code class="language-plaintext highlighter-rouge">join</code>方法，即将需要拼接的字符串放在数组中最后调用其 join 方法得到结果。不过由于使用数组也有一定的开销，因此当需要拼接的字符串较多的时候可以考虑用此方法。</p>
 
 <h4 id="26-dom-优化">2.6 DOM 优化</h4>
 
 <h5 id="261-在使用-dom-操作库时用上-array-ids">2.6.1 在使用 DOM 操作库时用上 array-ids</h5>
 
-<p>如果你正在使用<code class="highlighter-rouge">React</code>，<code class="highlighter-rouge">Ember</code>，<code class="highlighter-rouge">Angular</code>或者其他 DOM 操作库，使用<code class="highlighter-rouge">array-ids</code>（或者 Angular 1.x 中的<code class="highlighter-rouge">track-by</code>特性）非常有助于实现高性能，对于动态网页尤其如此。此特性的主要概念就是尽可能多地重用已有的节点。Array ids 使得 DOM 操作引擎可以知道在什么时候某个节点可以被映射到数组当中的某个元素。没有 array-ids 或者 track-by 的话，大部分库都会进行重新排序而摧毁已有的节点并重新创建新的。这就非常损耗性能了。</p>
+<p>如果你正在使用<code class="language-plaintext highlighter-rouge">React</code>，<code class="language-plaintext highlighter-rouge">Ember</code>，<code class="language-plaintext highlighter-rouge">Angular</code>或者其他 DOM 操作库，使用<code class="language-plaintext highlighter-rouge">array-ids</code>（或者 Angular 1.x 中的<code class="language-plaintext highlighter-rouge">track-by</code>特性）非常有助于实现高性能，对于动态网页尤其如此。此特性的主要概念就是尽可能多地重用已有的节点。Array ids 使得 DOM 操作引擎可以知道在什么时候某个节点可以被映射到数组当中的某个元素。没有 array-ids 或者 track-by 的话，大部分库都会进行重新排序而摧毁已有的节点并重新创建新的。这就非常损耗性能了。</p>
 
 <h5 id="262-重排和重绘">2.6.2 重排和重绘</h5>
 
@@ -232,7 +232,7 @@
   </ul>
 </blockquote>
 
-<p>重新渲染，就需要重新生成布局和重新绘制。前者叫做<code class="highlighter-rouge">重排</code>（reflow），后者叫做<code class="highlighter-rouge">重绘</code>（repaint）。提高网页性能，就是要降低重排和重绘的频率和成本，尽量少触发重新渲染。</p>
+<p>重新渲染，就需要重新生成布局和重新绘制。前者叫做<code class="language-plaintext highlighter-rouge">重排</code>（reflow），后者叫做<code class="language-plaintext highlighter-rouge">重绘</code>（repaint）。提高网页性能，就是要降低重排和重绘的频率和成本，尽量少触发重新渲染。</p>
 
 <p>一般来说，样式的写操作之后，如果有下面这些属性的读操作，都会引发浏览器立即重新渲染。</p>
 
@@ -260,7 +260,7 @@
 <ul>
   <li>DOM 的多个读操作（或多个写操作），应该放在一起。不要两个读操作之间，加入一个写操作。</li>
   <li>如果某个样式是通过重排得到的，那么最好缓存结果。避免下一次用到的时候，浏览器又要重排。</li>
-  <li>不要一条条地改变样式，而要通过改变<code class="highlighter-rouge">class</code>，或者<code class="highlighter-rouge">csstext</code>属性，一次性地改变样式。</li>
+  <li>不要一条条地改变样式，而要通过改变<code class="language-plaintext highlighter-rouge">class</code>，或者<code class="language-plaintext highlighter-rouge">csstext</code>属性，一次性地改变样式。</li>
   <li>尽量使用离线 DOM，而不是真实的网面 DOM。</li>
   <li>需要对某个节点进行多次操作时，先将元素设为 display: none（需要1次重排和重绘），对这个节点进行操作后再恢复显示。</li>
   <li>position 属性为 absolute 或 fixed 的元素，重排的开销会比较小，因为不用考虑它对其他元素的影响。</li>
@@ -282,7 +282,7 @@
 
 <h5 id="312-按需加载资源">3.1.2 按需加载资源</h5>
 
-<p>资源（特别是图片）的按需加载或者说<code class="highlighter-rouge">惰性加载</code>，可以有助于你的 Web 应用在整体上获得更好的性能。对于使用大量图片的页面来说惰性加载有着显著的三个好处：</p>
+<p>资源（特别是图片）的按需加载或者说<code class="language-plaintext highlighter-rouge">惰性加载</code>，可以有助于你的 Web 应用在整体上获得更好的性能。对于使用大量图片的页面来说惰性加载有着显著的三个好处：</p>
 
 <blockquote>
   <ul>
@@ -296,21 +296,21 @@
 
 <h5 id="313-css-sprites">3.1.3 CSS Sprites</h5>
 
-<p><code class="highlighter-rouge">CSS Sprites</code>其实就是把网页中用到的一些图片整合到一张图片文件中，再利用 CSS 的<code class="highlighter-rouge">background-image</code>，<code class="highlighter-rouge">background-repeat</code>，<code class="highlighter-rouge">background-position</code>的组合进行背景定位，background-position 可以用数字精确的定位出背景图片的位置。</p>
+<p><code class="language-plaintext highlighter-rouge">CSS Sprites</code>其实就是把网页中用到的一些图片整合到一张图片文件中，再利用 CSS 的<code class="language-plaintext highlighter-rouge">background-image</code>，<code class="language-plaintext highlighter-rouge">background-repeat</code>，<code class="language-plaintext highlighter-rouge">background-position</code>的组合进行背景定位，background-position 可以用数字精确的定位出背景图片的位置。</p>
 
 <h4 id="32-缓存">3.2 缓存</h4>
 
-<p><code class="highlighter-rouge">Caches</code>用于存储那些被频繁存取的静态数据的组件，便于随后对于这个数据的请求可以更快地被响应，或者说请求方式更加高效。由于 Web 应用是由很多可拆卸的部件组合而成，缓存就可以存在于架构中的很多部分。举例来说，缓存可以被放在动态内容服务器和客户端之间，就可以避免公共请求以减少服务器的负载，与此同时改善响应时间。其他缓存可能被放置在代码里，以优化某些用于脚本存取的通用模式，还有些缓存可能被放置在数据库或者是长运行进程之前。</p>
+<p><code class="language-plaintext highlighter-rouge">Caches</code>用于存储那些被频繁存取的静态数据的组件，便于随后对于这个数据的请求可以更快地被响应，或者说请求方式更加高效。由于 Web 应用是由很多可拆卸的部件组合而成，缓存就可以存在于架构中的很多部分。举例来说，缓存可以被放在动态内容服务器和客户端之间，就可以避免公共请求以减少服务器的负载，与此同时改善响应时间。其他缓存可能被放置在代码里，以优化某些用于脚本存取的通用模式，还有些缓存可能被放置在数据库或者是长运行进程之前。</p>
 
 <p>简而言之，在 Web 应用中使用缓存是一种改善响应时间和减少 CPU 使用的绝佳方式。所以你的 Web 应用在第二次运行脚本的时候就可以几乎瞬间加载了。</p>
 
-<p>对一个网站而言，CSS、JS、logo、图标这些静态资源文件更新的频率都比较低，而这些文件又几乎是每次 Http 请求都需要的，如果将这些文件缓存在浏览器中，可以极好的改善性能。通过设置 Http 头中的<code class="highlighter-rouge">cache-control</code>和<code class="highlighter-rouge">expires</code>的属性，可设定浏览器缓存，缓存时间可以是数天，甚至是几个月。</p>
+<p>对一个网站而言，CSS、JS、logo、图标这些静态资源文件更新的频率都比较低，而这些文件又几乎是每次 Http 请求都需要的，如果将这些文件缓存在浏览器中，可以极好的改善性能。通过设置 Http 头中的<code class="language-plaintext highlighter-rouge">cache-control</code>和<code class="language-plaintext highlighter-rouge">expires</code>的属性，可设定浏览器缓存，缓存时间可以是数天，甚至是几个月。</p>
 
-<p>同时，在使用<code class="highlighter-rouge">ajax</code>异步请求时，要主动告诉浏览器如果该请求有缓存就去请求缓存内容。</p>
+<p>同时，在使用<code class="language-plaintext highlighter-rouge">ajax</code>异步请求时，要主动告诉浏览器如果该请求有缓存就去请求缓存内容。</p>
 
 <h4 id="33-启用-http2">3.3 启用 HTTP/2</h4>
 
-<p>越来越多的浏览器都开始支持<code class="highlighter-rouge">HTTP/2</code>。这可能听起来没有必要，但是<code class="highlighter-rouge">HTTP/2</code>为同一服务器的并发连接问题带来了很多好处。换句话说，如果有很多小型资源需要加载（如果你打包过的话就没有必要了），在延迟和性能方面 HTTP/2 秒杀 HTTP/1。</p>
+<p>越来越多的浏览器都开始支持<code class="language-plaintext highlighter-rouge">HTTP/2</code>。这可能听起来没有必要，但是<code class="language-plaintext highlighter-rouge">HTTP/2</code>为同一服务器的并发连接问题带来了很多好处。换句话说，如果有很多小型资源需要加载（如果你打包过的话就没有必要了），在延迟和性能方面 HTTP/2 秒杀 HTTP/1。</p>
 
 <h4 id="34-使用负载均衡方案">3.4 使用负载均衡方案</h4>
 
@@ -392,10 +392,10 @@
 
 			
 <div style="margin-top:30px">
-    <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/blog/fe-optimizing/" class="share-btn twitter-btn" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
-    <a href="https://plus.google.com/share?url=http://localhost:4000/blog/fe-optimizing/" class="share-btn googleplus-btn" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/fe-optimizing/" class="share-btn facebook-btn" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
-    <a href="http://v.t.sina.com.cn/share/share.php?title=http://localhost:4000/blog/fe-optimizing/" class="share-btn weibo-btn" title="Share on Sina Weibo"><i class="fa fa-fw fa-weibo" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/intent/tweet?text=ikongsong.com/blog/fe-optimizing/" class="share-btn twitter-btn" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=ikongsong.com/blog/fe-optimizing/" class="share-btn googleplus-btn" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=ikongsong.com/blog/fe-optimizing/" class="share-btn facebook-btn" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+    <a href="http://v.t.sina.com.cn/share/share.php?title=ikongsong.com/blog/fe-optimizing/" class="share-btn weibo-btn" title="Share on Sina Weibo"><i class="fa fa-fw fa-weibo" aria-hidden="true"></i></a>
 </div>
 
 
@@ -438,17 +438,17 @@
   <div class="footer-content">
     <div class="social-wrapper text-center">
       <ul class="social-lists">
-        <li><a class="social-btn btn-white" href="mailto:hi@ikongsong.com" target="_blank" rel="noopener noreferrer" title="Mail me"><i class="fa fa-fw fa-envelope"></i></a></li>
-        
-        
-        <li><a class="social-btn btn-white" href="http://facebook.com/kongsong" target="_blank" rel="noopener noreferrer" title="Follow me on Facebook"><i class="fa fa-fw fa-facebook"></i></a></li>
-        
-        <li><a class="social-btn btn-white" href="http://linkedin.com/in/kongsong" target="_blank" rel="noopener noreferrer" title="Follow me on Linkedin"><i class="fa fa-fw fa-linkedin"></i></a></li>
+        <li><a class="social-btn btn-white" href="mailto:17665000622@163.com" target="_blank" rel="noopener noreferrer" title="Mail me"><i class="fa fa-fw fa-envelope"></i></a></li>
         
         
         
-        <li><a class="social-btn btn-white" href="http://github.com/songkong" target="_blank" rel="noopener noreferrer" title="Follow me on Github"><i class="fa fa-fw fa-github"></i></a></li>
-        <li><a class="social-btn btn-white" href="http://stackoverflow.com/users/6438519/song-kong" target="_blank" rel="noopener noreferrer" title="Follow me on Stackoverflow"><i class="fa fa-fw fa-stack-overflow"></i></a></li>
+        
+        
+        
+        
+        
+        <li><a class="social-btn btn-white" href="http://github.com/majunos" target="_blank" rel="noopener noreferrer" title="Follow me on Github"><i class="fa fa-fw fa-github"></i></a></li>
+        
         
         
         
@@ -464,7 +464,7 @@
         
       </ul>
     </div>
-    <div class="copyright text-center">Copyright © 2020 Song Kong. Powered by Jekyll.</div>
+    <div class="copyright text-center">Copyright © 2021 Ma Jun. Powered by Jekyll.</div>
   </div>
   <div id="top" class="btn-top" style="display:none">
     <a href=" #header "><i class="fa fa-paw" aria-hidden="true"></i></a>

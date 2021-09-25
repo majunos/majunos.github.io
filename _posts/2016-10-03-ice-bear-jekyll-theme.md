@@ -1,17 +1,72 @@
 ---
 layout: post
-title:  "Ice Bear Jekyll Theme"
-date:   2016-10-03 15:52:30 +0800
+title:  "Markdown 常用语法"
+date:   2021-09-25 15:52:30 +0800
 categories: [Tech]
-excerpt: This is my first jekyll theme and this article describes how to use it.
+excerpt: 这是一个markdown 常用语法描述，用于自己写博客查看.
 tags:
-  - EN
-  - jekyll
-  - front-end
+  - jekylI
+  - markdown
 ---
-This is my first jekyll theme decorated by my favorite items -- blue and ice bear. It's welcomed to give me a star at github if you like it.
+## 文字样式的编辑
 
-<iframe src="https://ghbtns.com/github-btn.html?user=songkong&repo=Blog&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+> \**演示粗体\**
+> \*演示斜体\*
+效果
+
+> **演示粗体**
+> *演示斜体*
+
+## 对段落的编辑
+\+ 演示列表
+    \+ 列表还可以有层级
+    
+\> 这是引用文字的效果
+
+效果
++ 演示列表
+    + 列表还可以有层级
+    
+> 这是引用文字的效果
+
+## 插入文章其他元素
+\[少数派](https://sspai.com)
+
+\![](https://cdn.sspai.com/attachment/thumbnail/2016/11/04/264631b984633898c415a818b181e5205653e_mw_640.jpg)
+
+效果
+[少数派](https://sspai.com)
+
+![](https://cdn.sspai.com/attachment/thumbnail/2016/11/04/264631b984633898c415a818b181e5205653e_mw_640.jpg)
+
+代码块增强
+    \```python
+    def 点赞机():
+        if 文章不错：
+            return 点赞
+        else:
+            return 差评
+    \```
+效果
+    ```python
+    def 点赞机():
+        if 文章不错：
+            return 点赞
+        else:
+            return 差评
+    ```
+
+要插入文章元素方面，它支持在 Markdown 里写表格，如果你这么写：
+\| First Header  | Second Header |
+\| ------------- | ------------- |
+\| Content Cell  | Content Cell  |
+\| Content Cell  | Content Cell  |
+效果
+
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
 
 # Installation
 ---
@@ -58,6 +113,7 @@ _italic_. **bold**. ***italic and bold***. ~~delete line~~. [link](http://kongso
 	2. Ordered List
 2. Ordered List
 	
+
 {% highlight ruby %}
 // Ruby codes
 

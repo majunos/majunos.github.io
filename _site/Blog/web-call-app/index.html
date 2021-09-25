@@ -9,8 +9,8 @@
   <meta name="description" content="IOS 9 和 10 利用 Universal Link 调起原生 App，告别系统体验极差的弹窗。其它版本 IOS 和安卓利用 iframe 调起 App。">
 
   <link rel="stylesheet" href="/assets/css/main.css" | prepend: site.baseurl }}">
-  <link rel="canonical" href="http://localhost:4000/blog/web-call-app/">
-  <link rel="alternate" type="application/rss+xml" title="ReedPipeOS-Song Kong" href="http://localhost:4000/feed.xml">
+  <link rel="canonical" href="ikongsong.com/blog/web-call-app/">
+  <link rel="alternate" type="application/rss+xml" title="ReedPipeOS-Song Kong" href="ikongsong.com/feed.xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
   <script src="/assets/js/jquery-1.8.2.min.js" | prepend: site.baseurl }}"></script>
   <script src="/assets/js/jPages.js" | prepend: site.baseurl }}"></script>
@@ -114,13 +114,11 @@
 
 <hr />
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">ua</span> <span class="o">=</span> <span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">ua</span> <span class="o">=</span> <span class="nb">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">;</span>
 
-<span class="c1">// 微信或微博内提示在浏览器打开
-</span>
+<span class="c1">// 微信或微博内提示在浏览器打开</span>
 <span class="k">if</span> <span class="p">(</span><span class="sr">/MicroMessenger|Weibo/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">ua</span><span class="p">))</span> <span class="p">{</span>
-    <span class="c1">// 这里做些处理，如现实一个提示在浏览器打开的灰色蒙板
-</span>
+    <span class="c1">// 这里做些处理，如现实一个提示在浏览器打开的灰色蒙板</span>
 	<span class="k">return</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -128,13 +126,12 @@
 
 <hr />
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// 使用了 Zepto.js，jQuery 同理
-</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'#open_app'</span><span class="p">).</span><span class="nx">size</span><span class="p">())</span> <span class="p">{</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#open_app'</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// 使用了 Zepto.js，jQuery 同理</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#open_app</span><span class="dl">'</span><span class="p">).</span><span class="nx">size</span><span class="p">())</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#open_app</span><span class="dl">'</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
 <span class="p">}</span>
-<span class="kd">var</span> <span class="nx">naUrl</span> <span class="o">=</span> <span class="s1">'这里是 app 链接，也就是你和 NA 的 RD 小伙伴商量好的协议'</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">iframeHtml</span> <span class="o">=</span> <span class="s1">'&lt;iframe src="'</span> <span class="o">+</span> <span class="nx">naUrl</span> <span class="o">+</span> <span class="s1">'" id="open_app" width="0" height="0" style="border: 0;display: none;"/&gt;'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">naUrl</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">这里是 app 链接，也就是你和 NA 的 RD 小伙伴商量好的协议</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">iframeHtml</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">&lt;iframe src="</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">naUrl</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">" id="open_app" width="0" height="0" style="border: 0;display: none;"/&gt;</span><span class="dl">'</span><span class="p">;</span>
 <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">iframeHtml</span><span class="p">);</span></code></pre></figure>
 
 <h4 id="3-判断本地是否安装-app">3. 判断本地是否安装 App</h4>
@@ -145,11 +142,10 @@
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"> <span class="kd">var</span> <span class="nx">startTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">();</span>
  <span class="kd">var</span> <span class="nx">delayDownload</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-	<span class="c1">// 做一下延迟
-</span>
+	<span class="c1">// 做一下延迟</span>
 	<span class="k">if</span> <span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">-</span> <span class="nx">startTime</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">isIos</span> <span class="o">=</span> <span class="p">(</span><span class="sr">/iphone|ipad|ipod/i</span><span class="p">).</span><span class="nx">test</span><span class="p">(</span><span class="nx">ua</span><span class="p">);</span>
-		<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">isIos</span><span class="p">?</span> <span class="s1">'这里是你的 App 在 Appstore 中的下载链接'</span> <span class="p">:</span> <span class="s1">'这里是你的 App 安卓的下载地址'</span><span class="p">;</span>
+		<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">isIos</span><span class="p">?</span> <span class="dl">'</span><span class="s1">这里是你的 App 在 Appstore 中的下载链接</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">这里是你的 App 安卓的下载地址</span><span class="dl">'</span><span class="p">;</span>
         <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span></code></pre></figure>
@@ -158,7 +154,7 @@
 
 <hr />
 
-<p>在 IOS 9 和 10 中，无法利用 iframe 调起 App，可以使用<code class="highlighter-rouge">location.href</code>直接跳转 App，但会出现两个问题：1. 当本地有 App 时，Safari 弹出<code class="highlighter-rouge">是否打开 App</code>的弹窗，当用户两次选择<code class="highlighter-rouge">取消</code>时，页面会跳转到苹果官网。2. 当本地无 App 时，Safari 会弹出<code class="highlighter-rouge">无效的链接</code>的弹窗，然后才会弹出<code class="highlighter-rouge">是否打开 Appstore</code>的弹窗，体验非常不好。因此，我们使用 Universal Link 来调起 App。</p>
+<p>在 IOS 9 和 10 中，无法利用 iframe 调起 App，可以使用<code class="language-plaintext highlighter-rouge">location.href</code>直接跳转 App，但会出现两个问题：1. 当本地有 App 时，Safari 弹出<code class="language-plaintext highlighter-rouge">是否打开 App</code>的弹窗，当用户两次选择<code class="language-plaintext highlighter-rouge">取消</code>时，页面会跳转到苹果官网。2. 当本地无 App 时，Safari 会弹出<code class="language-plaintext highlighter-rouge">无效的链接</code>的弹窗，然后才会弹出<code class="language-plaintext highlighter-rouge">是否打开 Appstore</code>的弹窗，体验非常不好。因此，我们使用 Universal Link 来调起 App。</p>
 
 <blockquote>
   <h6 id="universal-link-是什么">Universal Link 是什么？</h6>
@@ -168,7 +164,7 @@
 <p>NA 端如何实现 Universal Link，可以<a href="http://www.cocoachina.com/ios/20150902/13321.html">查看这里</a>。当你的 NA 小伙伴已经开发好后，就可以直接使用相应的协议啦。</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="sr">/iPhone OS 9|iPhone OS 10/i</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">ua</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s1">'这里是你和 NA 小伙伴商量好的协议'</span><span class="p">;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">这里是你和 NA 小伙伴商量好的协议</span><span class="dl">'</span><span class="p">;</span>
 	<span class="k">return</span><span class="p">;</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -178,10 +174,10 @@
 
 <p>当浏览器切换到后台后，我们需要清除代码中的延迟下载，以防当我们再一次返回页面后，页面跳转到 App 下载地址。</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"visibilitychange"</span><span class="p">,</span> <span class="nx">callAppSuccess</span><span class="p">);</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"webkitvisibilitychange"</span><span class="p">,</span> <span class="nx">callAppSuccess</span><span class="p">);</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"msvisibilitychange"</span><span class="p">,</span> <span class="nx">callAppSuccess</span><span class="p">);</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"blur"</span><span class="p">,</span> <span class="nx">callAppSuccess</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">visibilitychange</span><span class="dl">"</span><span class="p">,</span> <span class="nx">callAppSuccess</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">webkitvisibilitychange</span><span class="dl">"</span><span class="p">,</span> <span class="nx">callAppSuccess</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">msvisibilitychange</span><span class="dl">"</span><span class="p">,</span> <span class="nx">callAppSuccess</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">blur</span><span class="dl">"</span><span class="p">,</span> <span class="nx">callAppSuccess</span><span class="p">);</span>
 
 <span class="kd">function</span> <span class="nx">callAppSuccess</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="nx">delayDownload</span><span class="p">)</span> <span class="p">{</span>
@@ -206,10 +202,10 @@
 
 			
 <div style="margin-top:30px">
-    <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/blog/web-call-app/" class="share-btn twitter-btn" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
-    <a href="https://plus.google.com/share?url=http://localhost:4000/blog/web-call-app/" class="share-btn googleplus-btn" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/web-call-app/" class="share-btn facebook-btn" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
-    <a href="http://v.t.sina.com.cn/share/share.php?title=http://localhost:4000/blog/web-call-app/" class="share-btn weibo-btn" title="Share on Sina Weibo"><i class="fa fa-fw fa-weibo" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/intent/tweet?text=ikongsong.com/blog/web-call-app/" class="share-btn twitter-btn" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=ikongsong.com/blog/web-call-app/" class="share-btn googleplus-btn" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=ikongsong.com/blog/web-call-app/" class="share-btn facebook-btn" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+    <a href="http://v.t.sina.com.cn/share/share.php?title=ikongsong.com/blog/web-call-app/" class="share-btn weibo-btn" title="Share on Sina Weibo"><i class="fa fa-fw fa-weibo" aria-hidden="true"></i></a>
 </div>
 
 
@@ -252,17 +248,17 @@
   <div class="footer-content">
     <div class="social-wrapper text-center">
       <ul class="social-lists">
-        <li><a class="social-btn btn-white" href="mailto:hi@ikongsong.com" target="_blank" rel="noopener noreferrer" title="Mail me"><i class="fa fa-fw fa-envelope"></i></a></li>
-        
-        
-        <li><a class="social-btn btn-white" href="http://facebook.com/kongsong" target="_blank" rel="noopener noreferrer" title="Follow me on Facebook"><i class="fa fa-fw fa-facebook"></i></a></li>
-        
-        <li><a class="social-btn btn-white" href="http://linkedin.com/in/kongsong" target="_blank" rel="noopener noreferrer" title="Follow me on Linkedin"><i class="fa fa-fw fa-linkedin"></i></a></li>
+        <li><a class="social-btn btn-white" href="mailto:17665000622@163.com" target="_blank" rel="noopener noreferrer" title="Mail me"><i class="fa fa-fw fa-envelope"></i></a></li>
         
         
         
-        <li><a class="social-btn btn-white" href="http://github.com/songkong" target="_blank" rel="noopener noreferrer" title="Follow me on Github"><i class="fa fa-fw fa-github"></i></a></li>
-        <li><a class="social-btn btn-white" href="http://stackoverflow.com/users/6438519/song-kong" target="_blank" rel="noopener noreferrer" title="Follow me on Stackoverflow"><i class="fa fa-fw fa-stack-overflow"></i></a></li>
+        
+        
+        
+        
+        
+        <li><a class="social-btn btn-white" href="http://github.com/majunos" target="_blank" rel="noopener noreferrer" title="Follow me on Github"><i class="fa fa-fw fa-github"></i></a></li>
+        
         
         
         
@@ -278,7 +274,7 @@
         
       </ul>
     </div>
-    <div class="copyright text-center">Copyright © 2020 Song Kong. Powered by Jekyll.</div>
+    <div class="copyright text-center">Copyright © 2021 Ma Jun. Powered by Jekyll.</div>
   </div>
   <div id="top" class="btn-top" style="display:none">
     <a href=" #header "><i class="fa fa-paw" aria-hidden="true"></i></a>

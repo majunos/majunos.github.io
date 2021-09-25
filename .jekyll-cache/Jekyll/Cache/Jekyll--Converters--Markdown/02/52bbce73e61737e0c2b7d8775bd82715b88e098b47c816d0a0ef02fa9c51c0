@@ -1,0 +1,106 @@
+I"�<p>This is my first jekyll theme decorated by my favorite items – blue and ice bear. It’s welcomed to give me a star at github if you like it.</p>
+
+<iframe src="https://ghbtns.com/github-btn.html?user=songkong&amp;repo=Blog&amp;type=star&amp;count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+
+<h1 id="installation">Installation</h1>
+<hr />
+
+<ul>
+  <li>Fork the repository. &lt;iframe src="https://ghbtns.com/github-btn.html?user=songkong&amp;repo=Blog&amp;type=fork&amp;count=true" frameborder="0" scrolling="0" width="170px" height="20px"&gt;&lt;/iframe&gt;</li>
+  <li>Edit <code class="language-plaintext highlighter-rouge">_config.yml</code> file.</li>
+  <li>Add your own <code class="language-plaintext highlighter-rouge">projects</code> in <code class="language-plaintext highlighter-rouge">_includes/projects.html</code>.</li>
+  <li>Change <code class="language-plaintext highlighter-rouge">domain name</code> in <code class="language-plaintext highlighter-rouge">CNAME</code>.</li>
+  <li>Replace <code class="language-plaintext highlighter-rouge">favicon.ico</code> with your website icon.</li>
+  <li>Change <code class="language-plaintext highlighter-rouge">avatar.jpg</code> and <code class="language-plaintext highlighter-rouge">cartoon-avatar.jpg</code> in <code class="language-plaintext highlighter-rouge">assets/images</code>.</li>
+  <li>Edit <code class="language-plaintext highlighter-rouge">LICENSE.md</code> and <code class="language-plaintext highlighter-rouge">README.md</code>.</li>
+</ul>
+
+<blockquote>
+  <p>I use two categories for posts in my blog, <code class="language-plaintext highlighter-rouge">Tech</code> and <code class="language-plaintext highlighter-rouge">Life</code>. If you want to add other categories, remember to modify <code class="language-plaintext highlighter-rouge">_includes/post-list-pagination</code>, <code class="language-plaintext highlighter-rouge">_layouts/post-list.html</code> and <code class="language-plaintext highlighter-rouge">assets/js/script.js</code> to add <code class="language-plaintext highlighter-rouge">Tabs</code> and <code class="language-plaintext highlighter-rouge">Paginations</code> for every category posts.</p>
+</blockquote>
+
+<h1 id="style-test">Style test</h1>
+<hr />
+
+<p><em>italic</em>. <strong>bold</strong>. <strong><em>italic and bold</em></strong>. <del>delete line</del>. <a href="http://kongsong.me">link</a>.</p>
+
+<h1 id="heading-1">Heading 1</h1>
+
+<h2 id="heading-2">Heading 2</h2>
+
+<h3 id="heading-3">Heading 3</h3>
+
+<h4 id="heading-4">Heading 4</h4>
+
+<h5 id="heading-5">Heading 5</h5>
+
+<h6 id="heading-6">Heading 6</h6>
+
+<blockquote>
+  <h3 id="heading-3-in-blockquotes">Heading 3 in Blockquotes</h3>
+  <p>Normal Blockquotes text.</p>
+
+  <ul>
+    <li>Unordered List in Blockquotes.</li>
+  </ul>
+
+  <ol>
+    <li>Ordered List in Blockquotes.</li>
+  </ol>
+</blockquote>
+
+<ul>
+  <li>Unordered List.
+    <ul>
+      <li>Unordered List.</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>Ordered List
+    <ol>
+      <li>Ordered List</li>
+      <li>Ordered List</li>
+    </ol>
+  </li>
+  <li>Ordered List</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="no">Ruby</span> <span class="n">codes</span>
+
+<span class="nb">require</span> <span class="s1">'parallel'</span>
+
+<span class="no">Parallel</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="n">lots_of_data</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">chunk</span><span class="o">|</span>
+  <span class="n">heavy_computation</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+<span class="k">end</span></code></pre></figure>
+
+<table>
+  <thead>
+    <tr>
+      <th>table</th>
+      <th>table</th>
+      <th>table</th>
+      <th>table</th>
+      <th>table</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>This is table</td>
+      <td>This is table</td>
+      <td>This is table</td>
+      <td>This is table</td>
+      <td>This is table</td>
+    </tr>
+    <tr>
+      <td>This is table</td>
+      <td>This is table</td>
+      <td>This is table</td>
+      <td>This is table</td>
+      <td>This is table</td>
+    </tr>
+  </tbody>
+</table>
+
+:ET

@@ -9,8 +9,8 @@
   <meta name="description" content="这篇文章归纳了书中第1到8章的相关知识点，留作日后复习。">
 
   <link rel="stylesheet" href="/assets/css/main.css" | prepend: site.baseurl }}">
-  <link rel="canonical" href="http://localhost:4000/blog/javascript-reading-notes/">
-  <link rel="alternate" type="application/rss+xml" title="ReedPipeOS-Song Kong" href="http://localhost:4000/feed.xml">
+  <link rel="canonical" href="ikongsong.com/blog/javascript-reading-notes/">
+  <link rel="alternate" type="application/rss+xml" title="ReedPipeOS-Song Kong" href="ikongsong.com/feed.xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
   <script src="/assets/js/jquery-1.8.2.min.js" | prepend: site.baseurl }}"></script>
   <script src="/assets/js/jPages.js" | prepend: site.baseurl }}"></script>
@@ -137,7 +137,7 @@
 
 <h4 id="chapter1-1">1.1 ECMAScript</h4>
 
-<p>ECMAScript 是由 ECMA-262 定义的与<code class="highlighter-rouge">宿主环境</code>（如 Web 浏览器、Node 和 Adobe Flash 等）没有依赖关系的一门语言，该语言本身并不包括输入和输出定义。宿主环境不仅提供基本的 ECMAScript 实现，同时还会提供该语言的扩展，如 DOM。</p>
+<p>ECMAScript 是由 ECMA-262 定义的与<code class="language-plaintext highlighter-rouge">宿主环境</code>（如 Web 浏览器、Node 和 Adobe Flash 等）没有依赖关系的一门语言，该语言本身并不包括输入和输出定义。宿主环境不仅提供基本的 ECMAScript 实现，同时还会提供该语言的扩展，如 DOM。</p>
 
 <p>ECMA-262 规定了这门语言的下列组成：语法、类型、语句、关键字、保留字、操作符、对象。</p>
 
@@ -189,7 +189,7 @@
   <li>defer: 可选。只对外部脚本有效，用于实现延迟脚本。表示脚本可以延迟到文档完全被解析和显示之后再执行。延迟脚本会按照声明顺序执行，但在现实中，延迟脚本不一定会按照顺序执行，因此最好只包含一个延迟脚本。</li>
   <li>language: 已废弃。</li>
   <li>src: 可选。表示包含要执行代码的外部文件。带有src属性的&lt;script&gt;元素不应该在&lt;script&gt;和&lt;/script&gt;标签之间再包含额外的 JavaScript 代码。若包含，则嵌入的代码会被忽略。</li>
-  <li>type: 可选。表示编写代码使用的<code class="highlighter-rouge">脚本语言的内容类型（MIME类型）</code>。考虑到约定俗成和最大限度的浏览器兼容性，type 属性的值一般为<code class="highlighter-rouge">text/javascript</code>。</li>
+  <li>type: 可选。表示编写代码使用的<code class="language-plaintext highlighter-rouge">脚本语言的内容类型（MIME类型）</code>。考虑到约定俗成和最大限度的浏览器兼容性，type 属性的值一般为<code class="language-plaintext highlighter-rouge">text/javascript</code>。</li>
 </ul>
 
 <p>&lt;noscript&gt;元素的作用是，当浏览器不支持脚本或脚本被禁用时，该标签之间的内容会被显示出来，其他情况下，浏览器均不会呈现&lt;noscript&gt;中的内容。</p>
@@ -201,13 +201,13 @@
 <p>在 HTML 页面中嵌入执行 JavaScript 代码有两种方式：</p>
 
 <ul>
-  <li>使用 javascript: 前缀构建执行 JavaScript 代码的 URL。如<code class="highlighter-rouge">&lt;a href="javascript:alert('Hello world!');"&gt;&lt;/a&gt;</code>。</li>
+  <li>使用 javascript: 前缀构建执行 JavaScript 代码的 URL。如<code class="language-plaintext highlighter-rouge">&lt;a href="javascript:alert('Hello world!');"&gt;&lt;/a&gt;</code>。</li>
   <li>在&lt;script…/&gt;元素标签之间包含 JavaScript 代码。</li>
 </ul>
 
-<p>为了让 HTML 页面和 JavaScript 脚本更好的分离，我们将 JavaScript 脚本单独保存在<code class="highlighter-rouge">*.js</code>文件中，使用如下的语法格式导入外部脚本：</p>
+<p>为了让 HTML 页面和 JavaScript 脚本更好的分离，我们将 JavaScript 脚本单独保存在<code class="language-plaintext highlighter-rouge">*.js</code>文件中，使用如下的语法格式导入外部脚本：</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"test.js"</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"text/javascript"</span><span class="o">&gt;&lt;</span><span class="sr">/script&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">test.js</span><span class="dl">"</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script&gt;</span></code></pre></figure>
 
 <p>使用外部文件的优点：</p>
 
@@ -221,7 +221,7 @@
 
 <h4 id="chapter2-3">2.3 文档模式</h4>
 
-<p>使用<code class="highlighter-rouge">文档类型（doctype）</code>可定义文档模式：<code class="highlighter-rouge">混杂模式（quirks mode）</code>和<code class="highlighter-rouge">标准模式（standards mode）</code>。如果在文档开始处没有进行文档类型声明，则浏览器会默认开启混杂模式，混杂模式是向后兼容的，在不同浏览器下的行为差异非常大，不推荐使用。</p>
+<p>使用<code class="language-plaintext highlighter-rouge">文档类型（doctype）</code>可定义文档模式：<code class="language-plaintext highlighter-rouge">混杂模式（quirks mode）</code>和<code class="language-plaintext highlighter-rouge">标准模式（standards mode）</code>。如果在文档开始处没有进行文档类型声明，则浏览器会默认开启混杂模式，混杂模式是向后兼容的，在不同浏览器下的行为差异非常大，不推荐使用。</p>
 
 <p>可通过如下代码开启标准模式：</p>
 
@@ -259,10 +259,10 @@
 
 			
 <div style="margin-top:30px">
-    <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/blog/javascript-reading-notes/" class="share-btn twitter-btn" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
-    <a href="https://plus.google.com/share?url=http://localhost:4000/blog/javascript-reading-notes/" class="share-btn googleplus-btn" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/javascript-reading-notes/" class="share-btn facebook-btn" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
-    <a href="http://v.t.sina.com.cn/share/share.php?title=http://localhost:4000/blog/javascript-reading-notes/" class="share-btn weibo-btn" title="Share on Sina Weibo"><i class="fa fa-fw fa-weibo" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/intent/tweet?text=ikongsong.com/blog/javascript-reading-notes/" class="share-btn twitter-btn" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+    <a href="https://plus.google.com/share?url=ikongsong.com/blog/javascript-reading-notes/" class="share-btn googleplus-btn" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=ikongsong.com/blog/javascript-reading-notes/" class="share-btn facebook-btn" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i></a>
+    <a href="http://v.t.sina.com.cn/share/share.php?title=ikongsong.com/blog/javascript-reading-notes/" class="share-btn weibo-btn" title="Share on Sina Weibo"><i class="fa fa-fw fa-weibo" aria-hidden="true"></i></a>
 </div>
 
 
@@ -305,17 +305,17 @@
   <div class="footer-content">
     <div class="social-wrapper text-center">
       <ul class="social-lists">
-        <li><a class="social-btn btn-white" href="mailto:hi@ikongsong.com" target="_blank" rel="noopener noreferrer" title="Mail me"><i class="fa fa-fw fa-envelope"></i></a></li>
-        
-        
-        <li><a class="social-btn btn-white" href="http://facebook.com/kongsong" target="_blank" rel="noopener noreferrer" title="Follow me on Facebook"><i class="fa fa-fw fa-facebook"></i></a></li>
-        
-        <li><a class="social-btn btn-white" href="http://linkedin.com/in/kongsong" target="_blank" rel="noopener noreferrer" title="Follow me on Linkedin"><i class="fa fa-fw fa-linkedin"></i></a></li>
+        <li><a class="social-btn btn-white" href="mailto:17665000622@163.com" target="_blank" rel="noopener noreferrer" title="Mail me"><i class="fa fa-fw fa-envelope"></i></a></li>
         
         
         
-        <li><a class="social-btn btn-white" href="http://github.com/songkong" target="_blank" rel="noopener noreferrer" title="Follow me on Github"><i class="fa fa-fw fa-github"></i></a></li>
-        <li><a class="social-btn btn-white" href="http://stackoverflow.com/users/6438519/song-kong" target="_blank" rel="noopener noreferrer" title="Follow me on Stackoverflow"><i class="fa fa-fw fa-stack-overflow"></i></a></li>
+        
+        
+        
+        
+        
+        <li><a class="social-btn btn-white" href="http://github.com/majunos" target="_blank" rel="noopener noreferrer" title="Follow me on Github"><i class="fa fa-fw fa-github"></i></a></li>
+        
         
         
         
@@ -331,7 +331,7 @@
         
       </ul>
     </div>
-    <div class="copyright text-center">Copyright © 2020 Song Kong. Powered by Jekyll.</div>
+    <div class="copyright text-center">Copyright © 2021 Ma Jun. Powered by Jekyll.</div>
   </div>
   <div id="top" class="btn-top" style="display:none">
     <a href=" #header "><i class="fa fa-paw" aria-hidden="true"></i></a>

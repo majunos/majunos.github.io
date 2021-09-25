@@ -66,8 +66,7 @@ github:              majunos
 # Plugins
 plugins:
   - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-gist
+  - jekyll-paginate
 
 # Exclude list
 exclude: [README.md, Gemfile, Gemfile.lock, _site, src, vendor, CNAME, LICENSE, Rakefile,.sass-cache,.DS_Store,.idea]
